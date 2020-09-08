@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
 
-import Home from "views/home/Home";
-import Category from "views/category/Category";
-import Cart from "views/cart/Cart";
-import Profile from "views/profile/Profile";
+// 路由懒加载
+const Home = () => import('views/home/Home')
+const Category = () => import('views/category/Category')
+const Cart = () => import('views/cart/Cart')
+const Profile = () => import('views/profile/Profile')
 
 Vue.use(VueRouter)
 
@@ -31,7 +32,8 @@ const routes = [
   }
 ]
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 export default router
